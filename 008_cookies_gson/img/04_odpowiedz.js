@@ -1,10 +1,12 @@
 import http from 'k6/http';
+import {check} from 'k6';
 
 export default function () {
-    //cookies();
+    cookies();
     gson();
+    posts();
 }
-//przykład użycia cookieJar() i gson
+
 function cookies(){
     const jar = http.cookieJar();
     jar.set('https://httpbin.org/cookies', 'my_cookie', 'hello world');
@@ -16,5 +18,13 @@ function cookies(){
 
 function gson(){
     let res = http.get('https://jsonplaceholder.typicode.com/todos/1');
-    console.log("ID is " + res.json("id")) //https://github.com/tidwall/gjson#path-syntax
+    console.log("ID is" + res.json("id")) //https://github.com/tidwall/gjson#path-syntax
+}
+
+function posts(){
+    let res = http.get('https://jsonplaceholder.typicode.com/posts');
+    console.log("user IDS are" + JSON.stringify(res.json("#.userId"))) //https://github.com/tidwall/gjson#path-syntax
+    check(res.json("#.userId"),{
+        'userId 10 is on the list': (ids) => (ids.includes(10))
+    })
 }
