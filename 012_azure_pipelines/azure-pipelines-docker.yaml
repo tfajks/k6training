@@ -21,5 +21,5 @@ steps:
       docker run -i \
         -v `pwd`:/src \
         loadimpact/k6 \
-        run /src/003_basic_test/http_get.js \
+        run -e options=${{ parameters.option }} /src/003_basic_test/http_get.js \
     displayName: Run k6 cloud
