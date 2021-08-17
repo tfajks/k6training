@@ -14,7 +14,8 @@ export default function () {
         {'status is 200': (r) => r.status === 200},
         {
             category: "status check",
-            name: 'status is HTTP OK'
+            name: 'status is HTTP OK',
+            proto: "superProto",
         },
     );
 
