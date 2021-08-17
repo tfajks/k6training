@@ -18,7 +18,8 @@ export let options = {
         }
     },
     thresholds: {
-        'http_req_duration{scenario:withTags, secondRequest:true}': ['p(95)<80'],
+        //'http_req_duration{scenario:withTags, secondRequest:true}': ['p(95)<80'],
+        'http_req_duration{name:/todos/{n}}': ['p(95)<80'],
     }
 
 };
