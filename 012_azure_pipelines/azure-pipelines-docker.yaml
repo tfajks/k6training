@@ -3,6 +3,15 @@
 pool:
   vmImage: 'ubuntu-18.04'
 
+parameters:
+- name: option
+  displayName: Option
+  type: string
+  default: stressOptions
+  values:
+  - stressOptions
+  - smokeOptions
+
 steps:
   - script: |
       ls
