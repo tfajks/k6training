@@ -5,6 +5,7 @@ pool:
 
 steps:
   - script: |
+      ls
       docker pull loadimpact/k6
     displayName: Pull k6 image
   - script: |
